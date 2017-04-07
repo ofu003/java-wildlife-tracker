@@ -3,7 +3,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Sighting {
+public class Sighting implements MyInterface{
   private int animal_id;
   private String location;
   private String ranger_name;
@@ -76,4 +76,12 @@ public class Sighting {
     }
   }
 
+  public void delete(){
+    try(Connection con = DB.sql2o.open()){
+      String sql = "DELETE FROM sightings WHERE id=:id;";
+      con.createQuery(sql)
+        .addParameter("id", this.id)
+        .executeUpdate();
+    }
+  }
 }

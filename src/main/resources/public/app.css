@@ -1,0 +1,28 @@
+ul{
+  font-size: 20px;
+  list-style-type: circle;
+}
+
+p{
+  font-family: monospace;
+  size: 20px;
+}
+
+h1{
+  font-family: sans-serif;
+  size: 40px;
+}
+
+h2{
+  font-family: sans-serif;
+  size: 32px;
+}
+
+h3{
+  font-family: sans-serif;
+  size: 25px;
+}
+
+body{
+  background-color: #e6ffff
+}

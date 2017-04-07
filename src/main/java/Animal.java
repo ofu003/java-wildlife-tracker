@@ -2,7 +2,7 @@ import org.sql2o.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Animal {
+public class Animal implements MyInterface{
   public String name;
   public int id;
 
@@ -66,7 +66,7 @@ public class Animal {
         .executeUpdate();
     }
   }
-
+  @Override
   public void delete() {
     try(Connection con = DB.sql2o.open()) {
       String sql = "DELETE FROM animals WHERE id=:id;";
