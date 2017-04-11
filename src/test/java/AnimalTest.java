@@ -75,4 +75,12 @@ public class AnimalTest {
     assertTrue(Animal.find(999) == null);
   }
 
+  @Test
+  public void getId_animalInstantiatesWithId_1() {
+    Animal testAnimal = new Animal("Deer");
+    assertEquals(1, testAnimal.getId());
+  }
+
+  // getSightings needs test
+
 }

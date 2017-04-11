@@ -28,7 +28,8 @@ public class Animal implements MyInterface{
       return this.getName().equals(newAnimal.getName());
     }
   }
-
+  // For MyInterface
+  @Override
   public void save() {
     try(Connection con = DB.sql2o.open()) {
       String sql = "INSERT INTO animals (name) VALUES (:name);";
@@ -38,7 +39,8 @@ public class Animal implements MyInterface{
         .getKey();
     }
   }
-
+  // For MyInterface
+  @Override
   public static List<Animal> all() {
     try(Connection con = DB.sql2o.open()) {
       String sql = "SELECT * FROM animals;";
@@ -46,7 +48,7 @@ public class Animal implements MyInterface{
         .executeAndFetch(Animal.class);
     }
   }
-
+  // For MyInterface
   public static Animal find(int id) {
     try(Connection con = DB.sql2o.open()) {
       String sql = "SELECT * FROM animals WHERE id=:id;";
@@ -57,7 +59,7 @@ public class Animal implements MyInterface{
     }
   }
 
-  public void updateName(String name) {
+  public void update(String name) {
     try(Connection con = DB.sql2o.open()) {
       String sql = "UPDATE animals SET name=:name WHERE id=:id;";
       con.createQuery(sql)
@@ -66,6 +68,7 @@ public class Animal implements MyInterface{
         .executeUpdate();
     }
   }
+  // For MyInterface
   @Override
   public void delete() {
     try(Connection con = DB.sql2o.open()) {
