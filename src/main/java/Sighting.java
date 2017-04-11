@@ -41,8 +41,7 @@ public class Sighting implements MyInterface{
       return this.getAnimalId() == (newSighting.getAnimalId()) && this.getLocation().equals(newSighting.getLocation()) && this.getRangerName().equals(newSighting.getRangerName());
     }
   }
-    // For MyInterface
-  @Override
+
   public void save() {
     try(Connection con = DB.sql2o.open()) {
       String sql = "INSERT INTO sightings (animal_id, location, ranger_name) VALUES (:animal_id, :location, :ranger_name);";
@@ -55,8 +54,7 @@ public class Sighting implements MyInterface{
         .getKey();
     }
   }
-  // For MyInterface
-  @Override
+
   public static List<Sighting> all() {
     try(Connection con = DB.sql2o.open()) {
       String sql = "SELECT * FROM sightings;";
@@ -65,8 +63,7 @@ public class Sighting implements MyInterface{
         .executeAndFetch(Sighting.class);
     }
   }
-  // For MyInterface
-  @Override
+
   public static Sighting find(int id) {
     try(Connection con = DB.sql2o.open()) {
       String sql = "SELECT * FROM sightings WHERE id=:id;";

@@ -42,8 +42,6 @@ public class EndangeredAnimal implements MyInterface{
     }
   }
 
-  // For MyInterface
-  @Override
   public void save() {
     try(Connection con = DB.sql2o.open()) {
       String sql = "INSERT INTO endangered_animals (name, health, age) VALUES (:name, :health, :age);";
@@ -55,8 +53,7 @@ public class EndangeredAnimal implements MyInterface{
         .getKey();
     }
   }
-    // For MyInterface
-  @Override
+
   public static List<EndangeredAnimal> all() {
     try(Connection con = DB.sql2o.open()) {
       String sql = "SELECT * FROM endangered_animals;";
@@ -64,8 +61,7 @@ public class EndangeredAnimal implements MyInterface{
         .executeAndFetch(EndangeredAnimal.class);
     }
   }
-    // For MyInterface
-  @Override
+
   public static EndangeredAnimal find(int id) {
     try(Connection con = DB.sql2o.open()) {
       String sql = "SELECT * FROM endangered_animals WHERE id=:id;";
