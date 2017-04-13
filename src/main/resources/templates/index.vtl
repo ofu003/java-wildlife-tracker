@@ -14,9 +14,9 @@
     </select>
 
     <label>Location</label>
-    <input type="text" name="latLong">
+    <input type="text" name="latLong" required>
     <label>Your Name</label>
-    <input type="text" name="rangerName">
+    <input type="text" name="rangerName" required>
     <button type="submit">Submit Report</button>
   #end
 </form>
@@ -32,11 +32,10 @@
         <option value="$endangered_animal.getId()">$endangered_animal.getName()</option>
       #end
     </select>
-
     <label>Location</label>
-    <input type="text" name="latLong">
+    <input type="text" name="latLong" required>
     <label>Your Name</label>
-    <input type="text" name="rangerName">
+    <input type="text" name="rangerName" required>
     <button type="submit">Submit Report</button>
   #end
 </form>
@@ -56,7 +55,7 @@
   #end
 #end
 
-<h3>All Animals & Sightings</h3>
+<h3>Non-endangered Animal Sightings</h3>
 #if ($animals.size() == 0)
   <a href="/animal/new">Add Animal to Database to Report a Sighting</a>
 #else
