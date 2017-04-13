@@ -2,16 +2,12 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.5.3
--- Dumped by pg_dump version 9.5.3
-
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-SET row_security = off;
 
 --
 -- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
@@ -34,7 +30,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: animals; Type: TABLE; Schema: public; Owner: Guest
+-- Name: animals; Type: TABLE; Schema: public; Owner: Guest; Tablespace: 
 --
 
 CREATE TABLE animals (
@@ -67,7 +63,7 @@ ALTER SEQUENCE animals_id_seq OWNED BY animals.id;
 
 
 --
--- Name: endangered_animals; Type: TABLE; Schema: public; Owner: Guest
+-- Name: endangered_animals; Type: TABLE; Schema: public; Owner: Guest; Tablespace: 
 --
 
 CREATE TABLE endangered_animals (
@@ -102,14 +98,15 @@ ALTER SEQUENCE endangered_animals_id_seq OWNED BY endangered_animals.id;
 
 
 --
--- Name: sightings; Type: TABLE; Schema: public; Owner: Guest
+-- Name: sightings; Type: TABLE; Schema: public; Owner: Guest; Tablespace: 
 --
 
 CREATE TABLE sightings (
     id integer NOT NULL,
     animal_id integer,
     location character varying,
-    ranger_name character varying
+    ranger_name character varying,
+    timeofsighting timestamp without time zone
 );
 
 
@@ -169,7 +166,7 @@ COPY animals (id, name) FROM stdin;
 -- Name: animals_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('animals_id_seq', 1, false);
+SELECT pg_catalog.setval('animals_id_seq', 3, true);
 
 
 --
@@ -184,14 +181,14 @@ COPY endangered_animals (id, name, health, age) FROM stdin;
 -- Name: endangered_animals_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('endangered_animals_id_seq', 1, false);
+SELECT pg_catalog.setval('endangered_animals_id_seq', 3, true);
 
 
 --
 -- Data for Name: sightings; Type: TABLE DATA; Schema: public; Owner: Guest
 --
 
-COPY sightings (id, animal_id, location, ranger_name) FROM stdin;
+COPY sightings (id, animal_id, location, ranger_name, timeofsighting) FROM stdin;
 \.
 
 
@@ -199,11 +196,11 @@ COPY sightings (id, animal_id, location, ranger_name) FROM stdin;
 -- Name: sightings_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('sightings_id_seq', 1, false);
+SELECT pg_catalog.setval('sightings_id_seq', 3, true);
 
 
 --
--- Name: animals_pkey; Type: CONSTRAINT; Schema: public; Owner: Guest
+-- Name: animals_pkey; Type: CONSTRAINT; Schema: public; Owner: Guest; Tablespace: 
 --
 
 ALTER TABLE ONLY animals
@@ -211,7 +208,7 @@ ALTER TABLE ONLY animals
 
 
 --
--- Name: endangered_animals_pkey; Type: CONSTRAINT; Schema: public; Owner: Guest
+-- Name: endangered_animals_pkey; Type: CONSTRAINT; Schema: public; Owner: Guest; Tablespace: 
 --
 
 ALTER TABLE ONLY endangered_animals
@@ -219,7 +216,7 @@ ALTER TABLE ONLY endangered_animals
 
 
 --
--- Name: sightings_pkey; Type: CONSTRAINT; Schema: public; Owner: Guest
+-- Name: sightings_pkey; Type: CONSTRAINT; Schema: public; Owner: Guest; Tablespace: 
 --
 
 ALTER TABLE ONLY sightings

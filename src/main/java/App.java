@@ -37,6 +37,7 @@ public class App {
 
     post("/sighting", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
+      // Construct a sighting using user input
       String rangerName = request.queryParams("rangerName");
       int animalIdSelected = Integer.parseInt(request.queryParams("animalSelected"));
       String latLong = request.queryParams("latLong");

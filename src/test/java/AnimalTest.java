@@ -66,7 +66,7 @@ public class AnimalTest {
   public void updateName_updatesAnimalNameInDatabase_String() {
     Animal testAnimal = new Animal("Deer");
     testAnimal.save();
-    testAnimal.updateName("Buck");
+    testAnimal.update("Buck");
     assertEquals("Buck", testAnimal.getName());
   }
 
@@ -78,7 +78,7 @@ public class AnimalTest {
   @Test
   public void getId_animalInstantiatesWithId_1() {
     Animal testAnimal = new Animal("Deer");
-    assertEquals(1, testAnimal.getId());
+    assertTrue( testAnimal.getId()>0);
   }
 
   // getSightings needs test

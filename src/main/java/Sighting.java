@@ -2,9 +2,12 @@ import org.sql2o.*;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.sql.Timestamp;
+import java.text.DateFormat;
 
 public class Sighting implements MyInterface{
   private int animal_id;
+  private Timestamp timeofsighting;
   private String location;
   private String ranger_name;
   private int id;
@@ -32,6 +35,10 @@ public class Sighting implements MyInterface{
     return ranger_name;
   }
 
+  public Timestamp getTimeOfSighting(){
+    return timeofsighting;
+  }
+
   @Override
   public boolean equals(Object otherSighting) {
     if(!(otherSighting instanceof Sighting)) {
@@ -44,7 +51,7 @@ public class Sighting implements MyInterface{
 
   public void save() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO sightings (animal_id, location, ranger_name) VALUES (:animal_id, :location, :ranger_name);";
+      String sql = "INSERT INTO sightings (animal_id, location, ranger_name, timeofsighting) VALUES (:animal_id, :location, :ranger_name, now());";
       this.id = (int) con.createQuery(sql, true)
         .addParameter("animal_id", this.animal_id)
         .addParameter("location", this.location)

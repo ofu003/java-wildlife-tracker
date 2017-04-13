@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.text.DateFormat;
 import java.util.Date;
+import java.sql.Timestamp;
 
 public class SightingTest {
 
@@ -36,6 +37,30 @@ public class SightingTest {
     Sighting testSighting = new Sighting (testAnimal.getId(), "45.472428, -121.946466", "Ranger Avery");
     testSighting.save();
     assertEquals(true, Sighting.all().get(0).equals(testSighting));
+  }
+
+  @Test
+  public void
+  save_recordsTimeOfSightingforAnimal_true(){
+    Animal testAnimal = new Animal("Deer");
+    testAnimal.save();
+    Sighting testSighting = new Sighting (testAnimal.getId(), "45.472428, -121.946466", "Ranger Avery");
+    testSighting.save();
+    Timestamp savedTestAnimalTimeOfSighting = Sighting.find(testSighting.getId()).getTimeOfSighting();
+    Timestamp rightNow = new Timestamp(new Date().getTime());
+    assertEquals(rightNow.getDay(), savedTestAnimalTimeOfSighting.getDay());
+  }
+
+  @Test
+  public void
+  save_recordsTimeOfSightingforEndangeredAnimal_true(){
+    EndangeredAnimal testEndangeredAnimal = new EndangeredAnimal("Fox", "Healthy", "Young");
+    testEndangeredAnimal.save();
+    Sighting testSighting = new Sighting (testEndangeredAnimal.getId(), "45.47, -121.94", "Ranger Bear");
+    testSighting.save();
+    Timestamp savedTestEndangeredAnimalTimeOfSighting = Sighting.find(testSighting.getId()).getTimeOfSighting();
+    Timestamp rightNow = new Timestamp(new Date().getTime());
+    assertEquals(rightNow.getDay(), savedTestEndangeredAnimalTimeOfSighting.getDay());
   }
 
   @Test

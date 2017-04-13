@@ -8,8 +8,11 @@
 #else
   #foreach($sighting in $animal.getSightings())
     Location: $sighting.getLocation()
+    <br>
     Reported by: $sighting.getRangerName()
+    <br>
     ID: $sighting.getId()
     <br>
+    Time of Sighting: $sighting.getTimeOfSighting()
   #end
 #end

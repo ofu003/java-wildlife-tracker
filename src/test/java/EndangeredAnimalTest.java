@@ -73,13 +73,13 @@ public class EndangeredAnimalTest {
   @Test
   public void getName_returnsAnimalName_Fox(){
     EndangeredAnimal testEndangeredAnimal = new EndangeredAnimal("Fox", "Healthy", "Young");
-    assertEquals("Fox", testEndangeredAnimal.getAge());
+    assertEquals("Fox", testEndangeredAnimal.getName());
   }
 
   @Test
   public void getId_returnsAnimalId_1(){
     EndangeredAnimal testEndangeredAnimal = new EndangeredAnimal("Fox", "Healthy", "Young");
-    assertEquals(1, testEndangeredAnimal.getId());
+    assertTrue( testEndangeredAnimal.getId()>0);
   }
 
   // tests for delete and getSightings
