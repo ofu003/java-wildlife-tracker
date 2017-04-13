@@ -1,23 +1,25 @@
 <h4><a href="/">Home</a></h4>
 
 <h1>$endangeredAnimal.getName()</h1>
-<a>Endangered Animal ID: $endangeredAnimal.getId()</>
+<a>Endangered Animal ID: $endangeredAnimal.getId()</a>
 
 #if($endangeredAnimal.getSightings().size() == 0)
   <p>To report a sighting, please visit the <a href="/">home page</a>.</p>
 #else
   #foreach($sighting in $endangeredAnimal.getSightings())
-    Location: <strong>$sighting.getLocation()</strong>
-    <br>
-    Time of Sighting: $sighting.getTimeOfSighting()
-    <br>
-    Health: $endangeredAnimal.getHealth()
-    <br>
-    Age: $endangeredAnimal.getAge()
-    <br>
-    Reported by: $sighting.getRangerName()
-    <br>
-    Sighting ID: $sighting.getId()
-    <br>
+    <h6 class="thumbnail">
+      Location: <strong>$sighting.getLocation()</strong>
+      <br>
+      Time of Sighting: $sighting.getTimeOfSighting()
+      <br>
+      Health: $endangeredAnimal.getHealth()
+      <br>
+      Age: $endangeredAnimal.getAge()
+      <br>
+      Reported by: $sighting.getRangerName()
+      <br>
+      Sighting ID: $sighting.getId()
+      <br>
+    </h6>
   #end
 #end
