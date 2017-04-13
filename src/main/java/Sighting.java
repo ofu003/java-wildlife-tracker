@@ -48,7 +48,8 @@ public class Sighting implements MyInterface{
       return this.getAnimalId() == (newSighting.getAnimalId()) && this.getLocation().equals(newSighting.getLocation()) && this.getRangerName().equals(newSighting.getRangerName());
     }
   }
-
+  // For MyInterface
+  @Override
   public void save() {
     try(Connection con = DB.sql2o.open()) {
       String sql = "INSERT INTO sightings (animal_id, location, ranger_name, timeofsighting) VALUES (:animal_id, :location, :ranger_name, now());";

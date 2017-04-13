@@ -28,7 +28,8 @@ public class Animal implements MyInterface{
       return this.getName().equals(newAnimal.getName());
     }
   }
-
+  // For MyInterface
+  @Override
   public void save() {
     try(Connection con = DB.sql2o.open()) {
       String sql = "INSERT INTO animals (name) VALUES (:name);";

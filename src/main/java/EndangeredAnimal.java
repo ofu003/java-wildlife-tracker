@@ -41,7 +41,8 @@ public class EndangeredAnimal implements MyInterface{
       return this.getName().equals(newEndangeredAnimal.getName()) && this.getHealth().equals(newEndangeredAnimal.getHealth()) && this.getAge().equals(newEndangeredAnimal.getAge());
     }
   }
-
+  // For MyInterface
+  @Override 
   public void save() {
     try(Connection con = DB.sql2o.open()) {
       String sql = "INSERT INTO endangered_animals (name, health, age) VALUES (:name, :health, :age);";

@@ -76,9 +76,10 @@ public class AnimalTest {
   }
 
   @Test
-  public void getId_animalInstantiatesWithId_1() {
+  public void save_getsIdFromSavedAnimal() {
     Animal testAnimal = new Animal("Deer");
-    assertTrue( testAnimal.getId()>0);
+    Animal savedAnimal = Animal.all().get(0);
+    assertEquals( testAnimal.getId(), savedAnimal.getId());
   }
 
   // getSightings needs test
