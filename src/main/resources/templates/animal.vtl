@@ -1,7 +1,7 @@
 <h4><a href="/">Home</a></h4>
 
 <h1>$animal.getName()</h1>
-<h3>ID: $animal.getId()</h3>
+<a>Animal ID: $animal.getId()</a>
 
 #if($animal.getSightings().size() == 0)
   <p>To report a sighting, please visit the <a href="/">home page</a>.</p>
@@ -11,7 +11,7 @@
     <br>
     Reported by: $sighting.getRangerName()
     <br>
-    ID: $sighting.getId()
+    Sighting ID: $sighting.getId()
     <br>
     Time of Sighting: $sighting.getTimeOfSighting()
   #end
